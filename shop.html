@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Karma Botanicals & Mycology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: #050805;
+            --surface: #0D130D;
+            --primary: #5EEAD4;
+            --primary-foreground: #050805;
+            --secondary: #E6C86E;
+            --foreground: #B8C5B8;
+            --border: #222b22;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        .page-header {
+            padding-top: 12rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(rgba(5, 8, 5, 0.9), rgba(5, 8, 5, 0.9)), url('https://images.unsplash.com/photo-1518837695005-2083393ee3b7?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px rgba(94, 234, 212, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-surface/80 backdrop-blur-lg border-b border-border">
+         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                     <svg aria-label="Karma Botanicals & Mycology Logo" class="h-12 w-auto" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="var(--secondary)" font-family="Lora, serif">
+                            <text x="80" y="30" font-size="28" text-anchor="middle" font-weight="500">KARMA</text>
+                            <text x="80" y="50" font-size="10" text-anchor="middle" letter-spacing="1">Botanicals & Mycology</text>
+                        </g>
+                    </svg>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="shop.html" class="text-white font-semibold transition-colors">Shop</a>
+                    <a href="about.html" class="text-foreground hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="text-foreground hover:text-white transition-colors">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-foreground hover:text-white transition-colors">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface/95 backdrop-blur-lg">
+             <nav class="flex flex-col items-center space-y-4 p-6">
+                <a href="shop.html" class="text-lg text-white font-semibold transition-colors">Shop</a>
+                <a href="about.html" class="text-lg text-foreground hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="text-lg text-foreground hover:text-white transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <header class="page-header">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-white">Our Collections</h1>
+                <p class="mt-4 text-lg text-foreground max-w-2xl mx-auto">Explore our curated selections of rare and remarkable specimens.</p>
+            </div>
+        </header>
+        <section class="py-24 sm:py-32 bg-surface">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product 1 -->
+                    <a href="#" class="card rounded-lg p-8 block text-left group">
+                        <div class="overflow-hidden rounded-md mb-6">
+                            <img src="https://images.unsplash.com/photo-1600577963842-c134814d4e6c?q=80&w=1974&auto=format&fit=crop" alt="Exotic plants" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white">Exotic Botanical Specimens</h3>
+                        <p class="mt-2 text-foreground/80">From rare Alocasias to vibrant Philodendrons.</p>
+                        <p class="mt-4 font-semibold text-secondary">Starting from $29.99</p>
+                    </a>
+                    <!-- Product 2 -->
+                    <a href="#" class="card rounded-lg p-8 block text-left group">
+                         <div class="overflow-hidden rounded-md mb-6">
+                            <img src="https://images.unsplash.com/photo-1594282434032-27f918076042?q=80&w=2070&auto=format&fit=crop" alt="Mushroom grow kit" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white">Mycology Essentials</h3>
+                        <p class="mt-2 text-foreground/80">Spores & grow kits for gourmet cultivation.</p>
+                        <p class="mt-4 font-semibold text-secondary">Starting from $19.99</p>
+                    </a>
+                    <!-- Product 3 -->
+                     <a href="#" class="card rounded-lg p-8 block text-left group">
+                         <div class="overflow-hidden rounded-md mb-6">
+                            <img src="https://images.unsplash.com/photo-1621935540321-c85e8a162699?q=80&w=1974&auto=format&fit=crop" alt="Ethical barks" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white">Ethically Sourced Barks</h3>
+                        <p class="mt-2 text-foreground/80">For natural dyes and artisan applications.</p>
+                        <p class="mt-4 font-semibold text-secondary">Starting from $15.99</p>
+                    </a>
+                    <!-- More products... -->
+                </div>
+             </div>
+        </section>
+    </main>
+    
+    <footer class="bg-surface border-t border-border">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <a href="index.html" class="flex items-center justify-center gap-3 mb-6">
+                    <svg aria-label="Karma Botanicals & Mycology Logo" class="h-16 w-auto" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="var(--secondary)" font-family="Lora, serif">
+                            <text x="80" y="30" font-size="28" text-anchor="middle" font-weight="500">KARMA</text>
+                            <text x="80" y="50" font-size="10" text-anchor="middle" letter-spacing="1">Botanicals & Mycology</text>
+                        </g>
+                    </svg>
+                </a>
+                <div class="prose prose-sm text-foreground/60 max-w-3xl mx-auto">
+                    <h4 class="font-semibold text-foreground/80">Legal Disclaimer</h4>
+                    <p>All products are sold for legal purposes only (microscopy, ornamental cultivation, research, dyes). Not for human consumption or illegal use. Customers must know and adhere to their local laws. By purchasing, you agree to our terms.</p>
+                </div>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+                <p class="mt-8 text-center text-sm text-foreground/50">&copy; 2024 Karma Botanicals & Mycology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+     <script>
+        lucide.createIcons();
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
