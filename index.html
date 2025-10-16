@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karma Botanicals & Mycology - Where Curiosity Takes Root</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: #050805;
+            --surface: #0D130D;
+            --primary: #5EEAD4; /* Teal/Glow color */
+            --primary-foreground: #050805;
+            --secondary: #E6C86E; /* Gold Accent */
+            --foreground: #B8C5B8;
+            --border: #222b22;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: var(--background);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Lora', serif;
+        }
+        
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--background);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .hero-section {
+            height: 100vh;
+            background-image: url('1000817051.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 150px 50px var(--background);
+            pointer-events: none;
+        }
+
+        .btn {
+            @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+        }
+        .btn-primary {
+            @apply bg-primary text-primary-foreground font-bold h-12 px-8 text-base shadow-[0_0_20px_rgba(94,234,212,0.4)] hover:bg-white hover:shadow-[0_0_30px_rgba(94,234,212,0.7)];
+        }
+        .btn-secondary {
+            @apply bg-transparent border border-secondary text-secondary h-11 px-6 hover:bg-secondary hover:text-background;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px rgba(94, 234, 212, 0.2);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    
+    <div id="preloader">
+        <svg aria-label="Karma Botanicals & Mycology Logo" class="w-48 h-auto animate-pulse" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+            <g fill="var(--secondary)" font-family="Lora, serif">
+                <text x="80" y="30" font-size="28" text-anchor="middle" font-weight="500">KARMA</text>
+                <text x="80" y="50" font-size="10" text-anchor="middle" letter-spacing="1">Botanicals & Mycology</text>
+            </g>
+        </svg>
+    </div>
+
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                     <svg aria-label="Karma Botanicals & Mycology Logo" class="h-12 w-auto" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="var(--secondary)" font-family="Lora, serif">
+                            <text x="80" y="30" font-size="28" text-anchor="middle" font-weight="500">KARMA</text>
+                            <text x="80" y="50" font-size="10" text-anchor="middle" letter-spacing="1">Botanicals & Mycology</text>
+                        </g>
+                    </svg>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="shop.html" class="text-foreground hover:text-white transition-colors">Shop</a>
+                    <a href="about.html" class="text-foreground hover:text-white transition-colors">About Us</a>
+                    <a href="contact.html" class="text-foreground hover:text-white transition-colors">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-foreground hover:text-white transition-colors">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface/95 backdrop-blur-lg">
+             <nav class="flex flex-col items-center space-y-4 p-6">
+                <a href="shop.html" class="text-lg text-foreground hover:text-white transition-colors">Shop</a>
+                <a href="about.html" class="text-lg text-foreground hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="text-lg text-foreground hover:text-white transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="text-center z-10 p-4">
+                <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-bold text-white tracking-tight leading-tight reveal">
+                    Where Curiosity <br /> Takes Root
+                </h1>
+                <p class="mt-8 text-lg md:text-xl max-w-2xl mx-auto text-foreground reveal" style="transition-delay: 200ms;">
+                    Discover a curated world of rare botanicals and mycology essentials, ethically sourced for the discerning enthusiast and cultivator.
+                </p>
+                <div class="mt-12 reveal" style="transition-delay: 400ms;">
+                    <a href="shop.html" class="btn btn-primary">Explore The Collection</a>
+                </div>
+            </div>
+            <div class="hero-vignette"></div>
+        </section>
+
+        <section id="philosophy" class="py-24 sm:py-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 lg:gap-24">
+                    <div class="reveal">
+                        <img src="https://images.unsplash.com/photo-1445198822969-1f515842cd2e?q=80&w=2070&auto-format&fit-crop" alt="Sunlight on a lush fern leaf" class="rounded-lg shadow-2xl">
+                    </div>
+                    <div class="lg:pl-8 reveal" style="transition-delay: 200ms;">
+                        <span class="text-secondary font-semibold">Our Philosophy</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mt-2 mb-6">Nurturing Nature, <br/>Cultivating Wonder.</h2>
+                        <p class="text-lg text-foreground/80 leading-relaxed">
+                            At Karma Botanicals & Mycology, we see the world as a library of natural wonders. Our mission is to provide ethically sourced, high-quality specimens that empower enthusiasts, educators, and cultivators to forge a deeper, more meaningful connection with the plant and fungal kingdoms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="py-24 sm:py-32 bg-surface">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center reveal">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Curated Collections</h2>
+                    <p class="mt-4 text-lg text-foreground max-w-3xl mx-auto">From rare flora to essential mycology supplies, each item is selected for its unique qualities and potential to inspire.</p>
+                </div>
+                
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card rounded-lg p-8 reveal">
+                        <img src="https://images.unsplash.com/photo-1600577963842-c134814d4e6c?q=80&w=1974&auto=format&fit=crop" alt="Exotic plants" class="rounded-md w-full h-64 object-cover mb-6">
+                        <h3 class="font-serif text-2xl font-bold text-white">Exotic Botanical Specimens</h3>
+                        <p class="mt-2 text-foreground/80 mb-6">Discover vibrant foliage and unique flowering species, ready to thrive in your indoor oasis.</p>
+                        <a href="shop.html" class="btn btn-secondary w-full">View Botanicals</a>
+                    </div>
+                    <div class="card rounded-lg p-8 reveal" style="transition-delay: 200ms;">
+                        <img src="https://images.unsplash.com/photo-1594282434032-27f918076042?q=80&w=2070&auto-format&fit=crop" alt="Mushroom grow kit" class="rounded-md w-full h-64 object-cover mb-6">
+                        <h3 class="font-serif text-2xl font-bold text-white">Mycology Essentials</h3>
+                        <p class="mt-2 text-foreground/80 mb-6">High-quality spores & grow kits for microscopy, gourmet cultivation, and educational projects.</p>
+                        <a href="shop.html" class="btn btn-secondary w-full">Shop Mycology</a>
+                    </div>
+                    <div class="card rounded-lg p-8 reveal" style="transition-delay: 400ms;">
+                        <img src="https://images.unsplash.com/photo-1621935540321-c85e8a162699?q=80&w=1974&auto-format&fit=crop" alt="Ethical barks" class="rounded-md w-full h-64 object-cover mb-6">
+                        <h3 class="font-serif text-2xl font-bold text-white">Ethically Sourced Barks</h3>
+                        <p class="mt-2 text-foreground/80 mb-6">Valued for natural dyes, tannins, and artisan use. For legitimate research purposes only.</p>
+                        <a href="shop.html" class="btn btn-secondary w-full">Discover Barks</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="py-24 sm:py-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center reveal">
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">The Karma Promise</h2>
+                    <p class="mt-4 text-lg text-foreground max-w-3xl mx-auto">Our commitment extends beyond our products. It's about ensuring a trusted, enriching experience for our entire community.</p>
+                </div>
+                <div class="mt-20 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                    <div class="flex items-start gap-6 reveal">
+                        <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-surface border border-border text-primary">
+                            <i data-lucide="award" class="h-6 w-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Unrivaled Quality & Purity</h3>
+                            <p class="mt-2 text-foreground/80">Rigorous testing and meticulous standards ensure every specimen is of the highest caliber.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start gap-6 reveal">
+                        <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-surface border border-border text-primary">
+                            <i data-lucide="leaf" class="h-6 w-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Ethical & Sustainable Sourcing</h3>
+                            <p class="mt-2 text-foreground/80">We partner exclusively with responsible growers and suppliers who share our deep respect for nature.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start gap-6 reveal">
+                        <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-surface border border-border text-primary">
+                            <i data-lucide="shield-check" class="h-6 w-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Discreet & Secure Shipping</h3>
+                            <p class="mt-2 text-foreground/80">Your privacy is paramount. All orders are packaged discreetly and shipped securely to your door.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start gap-6 reveal">
+                        <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-surface border border-border text-primary">
+                            <i data-lucide="book-open" class="h-6 w-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl text-white">Knowledge & Community</h3>
+                            <p class="mt-2 text-foreground/80">Grow your expertise with our educational resources and connect with a passionate community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-surface border-t border-border">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center">
+                <a href="index.html" class="flex items-center justify-center gap-3 mb-6">
+                    <svg aria-label="Karma Botanicals & Mycology Logo" class="h-16 w-auto" viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="var(--secondary)" font-family="Lora, serif">
+                            <text x="80" y="30" font-size="28" text-anchor="middle" font-weight="500">KARMA</text>
+                            <text x="80" y="50" font-size="10" text-anchor="middle" letter-spacing="1">Botanicals & Mycology</text>
+                        </g>
+                    </svg>
+                </a>
+                <div class="prose prose-sm text-foreground/60 max-w-3xl mx-auto">
+                    <h4 class="font-semibold text-foreground/80">Legal Disclaimer</h4>
+                    <p>All products are sold for legal purposes only (microscopy, ornamental cultivation, research, dyes). Not for human consumption or illegal use. Customers must know and adhere to their local laws. By purchasing, you agree to our terms.</p>
+                </div>
+                <div class="mt-8 flex justify-center space-x-6">
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-foreground/60 hover:text-white transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+                <p class="mt-8 text-center text-sm text-foreground/50">&copy; 2024 Karma Botanicals & Mycology. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-surface/80', 'backdrop-blur-lg', 'border-b', 'border-border');
+            } else {
+                header.classList.remove('bg-surface/80', 'backdrop-blur-lg', 'border-b', 'border-border');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+
+        // Scroll reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+    </script>
+</body>
+</html>
+
+
